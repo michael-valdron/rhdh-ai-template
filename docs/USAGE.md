@@ -16,7 +16,7 @@ To import these templates click `Register Existing Component` on the Software Te
 
 ![Screenshot](./images/register.png)
 
-Import `https://github.com/redhat-ai-dev/ai-lab-template/blob/main/all.yaml`
+Import `https://github.com/redhat-developer/rhdh-ai-template/blob/main/all.yaml`
 
 ![Screenshot](./images/register2.png)
 
@@ -39,7 +39,7 @@ Add the following to your `app-config.yaml` file in your Backstage configuration
 
 ``` 
     - type: url
-      target:  https://github.com/redhat-ai-dev/ai-lab-template/blob/main/all.yaml
+      target:  https://github.com/redhat-developer/rhdh-ai-template/blob/main/all.yaml
       rules:
         - allow: [Location, Template]
 ```

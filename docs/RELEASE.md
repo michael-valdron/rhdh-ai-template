@@ -41,16 +41,16 @@ When **Major** & **Minor** releases happen there needs to be separation between 
 > **Note**: Follow this checklist for any of the following repositories:
 > - [redhat-ai-dev/ai-lab-app](https://github.com/redhat-ai-dev/ai-lab-app)
 > - [redhat-ai-dev/ai-lab-samples](https://github.com/redhat-ai-dev/ai-lab-samples)
-> - [redhat-ai-dev/rhdh-pipelines](https://github.com/redhat-ai-dev/rhdh-pipelines)
-> - [redhat-ai-dev/ai-lab-template](https://github.com/redhat-ai-dev/ai-lab-template)
+> - [redhat-developer/rhdh-ai-template-pipelines](https://github.com/redhat-developer/rhdh-ai-template-pipelines)
+> - [redhat-developer/rhdh-ai-template](https://github.com/redhat-developer/rhdh-ai-template)
 > - [redhat-ai-dev/ai-rhdh-installer](https://github.com/redhat-ai-dev/ai-rhdh-installer)
 > 
-> **Note**: If any of the following has a release there must be the same kind of release for [redhat-ai-dev/ai-lab-template](https://github.com/redhat-ai-dev/ai-lab-template):
+> **Note**: If any of the following has a release there must be the same kind of release for [redhat-developer/rhdh-ai-template](https://github.com/redhat-developer/rhdh-ai-template):
 > - [redhat-ai-dev/ai-lab-app](https://github.com/redhat-ai-dev/ai-lab-app)
 > - [redhat-ai-dev/ai-lab-samples](https://github.com/redhat-ai-dev/ai-lab-samples)
-> - [redhat-ai-dev/rhdh-pipelines](https://github.com/redhat-ai-dev/rhdh-pipelines)
+> - [redhat-developer/rhdh-ai-template-pipelines](https://github.com/redhat-developer/rhdh-ai-template-pipelines)
 > 
-> **Note**: If there is a major or minor release of [redhat-ai-dev/ai-lab-template](https://github.com/redhat-ai-dev/ai-lab-template), the same kind of release must be created for [redhat-ai-dev/ai-rhdh-installer](https://github.com/redhat-ai-dev/ai-rhdh-installer).
+> **Note**: If there is a major or minor release of [redhat-developer/rhdh-ai-template](https://github.com/redhat-developer/rhdh-ai-template), the same kind of release must be created for [redhat-ai-dev/ai-rhdh-installer](https://github.com/redhat-ai-dev/ai-rhdh-installer).
 
 - [ ] Create a new fork branch v[major].[minor].[patch] from main or the corresponding previous release branch.
   - Note: Target this branch for each repository for the following steps
@@ -78,10 +78,10 @@ When **Major** & **Minor** releases happen there needs to be separation between 
 - [ ] Create release under GitHub repository, generate [release notes](#release-notes)
 - [ ] For a Major/Minor release, announce version release on Slack channels and mailing lists using [templates](#release-announcement-template):
   - Slack channels
-    - #forum-rhdh-plugins-and-ai
+    - `#forum-rhdh`
   - Mailing Lists
-    - dev-ai
-    - team-devfile@redhat.com
+    - rhdh-ai
+    - rhdh-all
 
 ## Release Notes
 

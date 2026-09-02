@@ -12,9 +12,9 @@ This document addresses how you can contribute for
 
 ## Pipelines
 
-To update and/or contribute to the Pipelines, head over to the [rhdh-pipelines](https://github.com/redhat-ai-dev/rhdh-pipelines) repository.
+To update and/or contribute to the Pipelines, head over to the [rhdh-ai-template-pipelines](https://github.com/redhat-developer/rhdh-ai-template-pipelines) repository.
 
-The [update-tekton-definition](../scripts/update-tekton-definition) script copies over the necessary resources from the rhdh-pipelines repository into the [skeleton](../skeleton/) directory.
+The [update-tekton-definition](../scripts/update-tekton-definition) script copies over the necessary resources from the rhdh-ai-template-pipelines repository into the [skeleton](../skeleton/) directory.
 
 At this moment, the Software Templates support Tekton. All the Tekton resources - PipelineRun, Pipeline and Task are located in the rhdh-piplines repository.
 
