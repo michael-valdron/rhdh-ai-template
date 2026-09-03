@@ -21,4 +21,4 @@ The following image depicts an example of what you can expect to see from your d
     - .mp4
     - .flac
 
-The source code for this Audio to Text application is available at [github.com/redhat-ai-dev/ai-lab-samples/tree/main/audio-to-text](https://github.com/redhat-ai-dev/ai-lab-samples/tree/main/audio-to-text).
+The source code for this Audio to Text application is available at [github.com/redhat-developer/rhdh-ai-template/tree/main/samples/audio-to-text](https://github.com/redhat-developer/rhdh-ai-template/tree/main/samples/audio-to-text).

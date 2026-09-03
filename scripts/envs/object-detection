@@ -31,7 +31,7 @@ export SUPPORT_DETR=true
 # for gitlab case, since gitlab does not have pipeline webhook pre-set to trigger the initial build
 export APP_INTERFACE_CONTAINER="quay.io/redhat-ai-dev/object_detection:latest"
 
-export TEMPLATE_SOURCE_URL="https://github.com/redhat-ai-dev/ai-lab-samples/tree/main/object-detection"
+export TEMPLATE_SOURCE_URL="https://github.com/redhat-developer/rhdh-ai-template/tree/main/samples/object-detection"
 
 # application configuration
 # Reference the above info as different names for templating purposes.

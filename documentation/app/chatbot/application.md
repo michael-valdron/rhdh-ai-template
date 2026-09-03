@@ -8,4 +8,4 @@ You should be very **clear** and **specific** when giving your prompt in order t
 
 ![Example of Application](./images/chatbot.png)
 
-The source code for this Chatbot application is available at [github.com/redhat-ai-dev/ai-lab-samples/tree/main/chatbot](https://github.com/redhat-ai-dev/ai-lab-samples/tree/main/chatbot).
+The source code for this Chatbot application is available at [github.com/redhat-developer/rhdh-ai-template/tree/main/samples/chatbot](https://github.com/redhat-developer/rhdh-ai-template/tree/main/samples/chatbot).

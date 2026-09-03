@@ -40,7 +40,7 @@ export CLEANUP_DB=false
 export DB_CONTAINER="quay.io/redhat-ai-dev/chroma:latest"
 export DB_PORT=8000
 
-export TEMPLATE_SOURCE_URL="https://github.com/redhat-ai-dev/ai-lab-samples/tree/main/rag"
+export TEMPLATE_SOURCE_URL="https://github.com/redhat-developer/rhdh-ai-template/tree/main/samples/rag"
 
 # application configuration
 # Reference the above info as different names for templating purposes.
