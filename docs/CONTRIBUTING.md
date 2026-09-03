@@ -29,9 +29,9 @@ At this moment, the Software Templates support ArgoCD. All the ArgoCD Applicatio
 
 ## AI Samples
 
-To update and/or contribute to the AI Samples, head over to the [ai-lab-samples](https://github.com/redhat-ai-dev/ai-lab-samples) repository.
+AI Samples are found in the [samples](../samples) directory. Changes are made here then used in the Software Template rendering process. The [pull-sample-apps.sh](../scripts/pull-sample-apps.sh) script can be used to pull upstream changes into the samples. See [samples README](../samples/README.md) for further details on samples usage/contribution.
 
-The [import-ai-lab-samples](../scripts/import-ai-lab-samples) script copies over the necessary application files and resources into the the [templates](../templates/) directory. The script also copies over the necessary techdocs and the skeleton Software Template from the skeleton directory.
+The [apply-samples](../scripts/apply-samples) script copies over the necessary application files and resources into the the [templates](../templates/) directory. The script also copies over the necessary techdocs and the skeleton Software Template from the skeleton directory.
 
 If you want to contribute to the techdocs associated with the Templates, check out the [techdoc](../skeleton/techdoc/) and [template-card-techdocs](../skeleton/template-card-techdocs/) directories.
 
