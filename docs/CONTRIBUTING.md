@@ -21,11 +21,11 @@ At this moment, the Software Templates support Tekton. All the Tekton resources 
 
 ## GitOps
 
-To update and/or contribute to the GitOps, head over to the [ai-lab-app](https://github.com/redhat-ai-dev/ai-lab-app) repository.
+The GitOps application is found in the [apps/ai](../apps/ai) directory. Changes are made here then used in the Software Template rendering process. See [apps/ai README](../apps/ai/README.md) for further details on GitOps usage/contribution.
 
-The [import-gitops-template](../scripts/import-gitops-template) script copies over the necessary resources from the ai-lab-app repository into the [skeleton](../skeleton/) directory.
+The [apply-gitops-template](../scripts/apply-gitops-template) script copies over the necessary resources from the [apps/ai](../apps/ai) directory into the [skeleton](../skeleton/) directory.
 
-At this moment, the Software Templates support ArgoCD. All the ArgoCD Applications and Kubernetes/OpenShift resources to run the sample application are located in the ai-lab-app repository.
+At this moment, the Software Templates support ArgoCD.
 
 ## AI Samples
 

@@ -39,14 +39,11 @@ When **Major** & **Minor** releases happen there needs to be separation between 
 ## Checklist
 
 > **Note**: Follow this checklist for any of the following repositories:
-> - [redhat-ai-dev/ai-lab-app](https://github.com/redhat-ai-dev/ai-lab-app)
 > - [redhat-developer/rhdh-ai-template-pipelines](https://github.com/redhat-developer/rhdh-ai-template-pipelines)
 > - [redhat-developer/rhdh-ai-template](https://github.com/redhat-developer/rhdh-ai-template)
 > - [redhat-ai-dev/ai-rhdh-installer](https://github.com/redhat-ai-dev/ai-rhdh-installer)
 > 
-> **Note**: If any of the following has a release there must be the same kind of release for [redhat-developer/rhdh-ai-template](https://github.com/redhat-developer/rhdh-ai-template):
-> - [redhat-ai-dev/ai-lab-app](https://github.com/redhat-ai-dev/ai-lab-app)
-> - [redhat-developer/rhdh-ai-template-pipelines](https://github.com/redhat-developer/rhdh-ai-template-pipelines)
+> **Note**: If [redhat-developer/rhdh-ai-template-pipelines](https://github.com/redhat-developer/rhdh-ai-template-pipelines) has a release there must be the same kind of release for [redhat-developer/rhdh-ai-template](https://github.com/redhat-developer/rhdh-ai-template).
 > 
 > **Note**: If there is a major or minor release of [redhat-developer/rhdh-ai-template](https://github.com/redhat-developer/rhdh-ai-template), the same kind of release must be created for [redhat-ai-dev/ai-rhdh-installer](https://github.com/redhat-ai-dev/ai-rhdh-installer).
 
