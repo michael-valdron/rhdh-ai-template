@@ -12,7 +12,7 @@ The following image depicts an example of what you can expect to see from your d
 
 ![Example of Application](./images/rag.png)
 
-The source code for this RAG application is available at [github.com/redhat-ai-dev/ai-lab-samples/tree/main/rag](https://github.com/redhat-ai-dev/ai-lab-samples/tree/main/rag).
+The source code for this RAG application is available at [github.com/redhat-developer/rhdh-ai-template/tree/main/samples/rag](https://github.com/redhat-developer/rhdh-ai-template/tree/main/samples/rag).
 
 !!! tip
 

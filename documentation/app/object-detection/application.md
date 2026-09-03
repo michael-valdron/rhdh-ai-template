@@ -12,4 +12,4 @@ The following image depicts an example of what you can expect to see from your d
 
 ![Example of Application](./images/object-detection.png)
 
-The source code for this Audio to Text application is available at [github.com/redhat-ai-dev/ai-lab-samples/tree/main/object-detection](https://github.com/redhat-ai-dev/ai-lab-samples/tree/main/object-detection).
+The source code for this Audio to Text application is available at [github.com/redhat-developer/rhdh-ai-template/tree/main/samples/object-detection](https://github.com/redhat-developer/rhdh-ai-template/tree/main/samples/object-detection).
