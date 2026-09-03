@@ -10,7 +10,7 @@ You can use this AI Software Template to create a new GitOps deployment reposito
 
 By running this template, you will receive the following resources:
 
-- [ibm-granite/granite-3.1-8b-instruct](https://huggingface.co/ibm-granite/granite-3.1-8b-instruct) model served by a [vLLM](https://github.com/redhat-ai-dev/developer-images/tree/main/model-servers/vllm/0.8.4) inference server.
+- [ibm-granite/granite-3.1-8b-instruct](https://huggingface.co/ibm-granite/granite-3.1-8b-instruct) model served by a [vLLM](https://github.com/redhat-developer/rhdh-ai-developer-images/tree/main/model-servers/vllm/0.8.4) inference server.
 
 !!! info
 

@@ -1,4 +1,4 @@
-#  AI-lab Software Templates
+# AI Software Templates
 
 ## Prerequisite 
 > [!IMPORTANT]  
@@ -8,10 +8,10 @@
 
 To use the AI Software Templates in your Backstage or Red Hat Developer Hub (RHDH) either
 
-1. Import all of the Templates using the [Location](https://github.com/redhat-ai-dev/ai-lab-template/blob/main/all.yaml) link or, 
-2. Import a specific Template using the [Template](https://github.com/redhat-ai-dev/ai-lab-template/blob/rolling-demo/templates/chatbot/template.yaml) link.
+1. Import all of the Templates using the [Location](https://github.com/redhat-developer/rhdh-ai-template/blob/main/all.yaml) link or, 
+2. Import a specific Template using the [Template](https://github.com/redhat-developer/rhdh-ai-template/blob/rolling-demo/templates/chatbot/template.yaml) link.
 
-For more information on how to use the Sofware Templates, please read our usage [guide](./docs/USAGE.md).
+For more information on how to use the Software Templates, please read our usage [guide](./docs/USAGE.md).
  
 ## Contributing
 

@@ -16,7 +16,7 @@ This guide explains how to deploy application workloads to a remote OpenShift cl
   - Node Feature Discovery (with a `NodeFeatureDiscovery` CR)
   - NVIDIA GPU Operator (with a `ClusterPolicy` CR)
   - OpenShift AI Operator (with a `DataScienceCluster` CR)
-- ⚠️ Complete the instructions on [configuring the remote cluster](https://github.com/redhat-ai-dev/ai-lab-template/blob/main/docs/REMOTE_CLUSTER_CONFIGURATION.md)
+- ⚠️ Complete the instructions on [configuring the remote cluster](https://github.com/redhat-developer/rhdh-ai-template/blob/main/docs/REMOTE_CLUSTER_CONFIGURATION.md)
 
 ---
 

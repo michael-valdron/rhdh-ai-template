@@ -4,7 +4,7 @@
  
 This pipeline is used to create Containerfile based SSCS (Software Supply Chain Security) builds. The pipeline run by this runner clones the source, builds an image with SBOM (Software Bill of Materials), attests, and pushes these to the users image registry.  
 
-Tasks references come from this [repository](https://github.com/redhat-ai-dev/rhdh-pipelines) `pac/pipelines` and the tasks are defined in `pac/tasks`. The tasks are referenced by URL using the git resolver in tekton. 
+Tasks references come from this [repository](https://github.com/redhat-developer/rhdh-ai-template-pipelines) `pac/pipelines` and the tasks are defined in `pac/tasks`. The tasks are referenced by URL using the git resolver in tekton. 
  
 When the pipelines in this repository are updated, all future runs in existing pipelines are shared.
 
