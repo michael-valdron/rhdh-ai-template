@@ -6,4 +6,4 @@ The following image depicts an example of what you can expect to see from your d
 
 ![Example of Application](./images/codegen.png)
 
-The source code for this Codegen application is available at [github.com/redhat-ai-dev/ai-lab-samples/tree/main/codegen](https://github.com/redhat-ai-dev/ai-lab-samples/tree/main/codegen).
+The source code for this Codegen application is available at [github.com/redhat-developer/rhdh-ai-template/tree/main/samples/codegen](https://github.com/redhat-developer/rhdh-ai-template/tree/main/samples/codegen).
