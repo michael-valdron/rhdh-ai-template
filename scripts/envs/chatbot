@@ -30,7 +30,6 @@ export LLM_MODEL_SRC="https://huggingface.co/ibm-granite/granite-3.3-8b-instruct
 
 # model configurations
 export SUPPORT_LLM=true
-export SUPPORT_MODEL_CATALOG=true
 
 # for gitlab case, since gitlab does not have pipeline webhook pre-set to trigger the initial build
 export APP_INTERFACE_CONTAINER="quay.io/redhat-ai-dev/chatbot:latest"

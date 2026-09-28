@@ -30,7 +30,6 @@ export LLM_MODEL_SRC="https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-A
 
 # model configurations
 export SUPPORT_LLM=true
-export SUPPORT_MODEL_CATALOG=true
 
 # for gitlab case, since gitlab does not have pipeline webhook pre-set to trigger the initial build
 export APP_INTERFACE_CONTAINER="quay.io/redhat-ai-dev/codegen:latest"
