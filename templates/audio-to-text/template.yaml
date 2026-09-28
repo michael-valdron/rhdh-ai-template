@@ -503,6 +503,13 @@ spec:
           modelEndpointSecretKey: ${{ parameters.modelEndpointSecretKey }}
           includeModelEndpointSecret: ${{ parameters.includeModelEndpointSecret }}
           # SED_EXISTING_END
+          # SED_EXISTING_START
+          # SED_EXISTING_FROM_CATALOG_START
+          # SED_ASR_MODEL_SERVER_START
+          modelCatalogEntityRef: ${{ parameters.catalogModelServer if parameters.modelServer === 'choose-from-the-catalog' else '' }}
+          # SED_ASR_MODEL_SERVER_END
+          # SED_EXISTING_FROM_CATALOG_END
+          # SED_EXISTING_END
           # SED_APP_SUPPORT_START
           # for RHOAI
           rhoaiSelected: ${{ parameters.rhoaiSelected }}
