@@ -244,19 +244,17 @@ spec:
                 modelServerDescription:
                   type: 'null'
                   # SED_LLM_SERVER_START
-                  description: Select a model from the RHDH catalog you wish to use with your application.
+                  description: Select a model from the RHDH catalog to use with your application.
                 catalogModel:
-                  title: Model name
+                  title: Model Server Entity
                   type: string
                   ui:help: "The model chosen from the model catalog."
                   ui:field: EntityPicker
                   ui:options:
                     allowedKinds: []
                     catalogFilter:
-                      kind: resource
-                      spec.type: ai-model
-                      spec.dependencyOf:
-                        exists: true
+                      kind: AiModelServerAPI
+                      spec.type: ai-model-server
                   # SED_LLM_SERVER_END
                   # SED_DETR_MODEL_SERVER_START
                   description: Select a model server from the RHDH catalog you wish to use with your application.
@@ -268,8 +266,8 @@ spec:
                   ui:options:
                     allowedKinds: []
                     catalogFilter:
-                      kind: component
-                      spec.type: model-server
+                      kind: AiModelServerAPI
+                      spec.type: ai-model-server
                   # SED_DETR_MODEL_SERVER_END
                   # SED_ASR_MODEL_SERVER_START
                   description: Select a model server from the RHDH catalog you wish to use with your application.
@@ -281,8 +279,8 @@ spec:
                   ui:options:
                     allowedKinds: []
                     catalogFilter:
-                      kind: component
-                      spec.type: model-server
+                      kind: AiModelServerAPI
+                      spec.type: ai-model-server
                 # SED_ASR_MODEL_SERVER_END
                 includeModelEndpointSecret:
                   title: Is bearer authentication required?
@@ -500,23 +498,14 @@ spec:
   steps:
     # SED_EXISTING_START
     # SED_EXISTING_FROM_CATALOG_START
-    # SED_LLM_SERVER_START
-    # Fetches the ai-model entity if selected
-    - id: fetch-model-from-catalog
-      name: Fetch Model From Catalog
-      action: catalog:fetch
-      if: ${{ parameters.modelServer === 'choose-from-the-catalog' }}
-      input:
-        entityRef: ${{ parameters.catalogModel }}
-    # SED_LLM_SERVER_END
-    # Fetches the model-server entity of the selected ai-model
+    # Fetches the selected AI model server entity
     - id: fetch-model-server-from-catalog
       name: Fetch Model Server From Catalog
       action: catalog:fetch
       if: ${{ parameters.modelServer === 'choose-from-the-catalog' }}
       input:
         # SED_LLM_SERVER_START
-        entityRef: ${{ steps['fetch-model-from-catalog'].output.entity.spec.dependencyOf[0] }}
+        entityRef: ${{ parameters.catalogModel }}
         # SED_LLM_SERVER_END
         # SED_ASR_MODEL_SERVER_START
         entityRef: ${{ parameters.catalogModelServer }}
@@ -553,7 +542,7 @@ spec:
           appRunCommand: "${APP_RUN_COMMAND}"
           modelServiceContainer: ${MODEL_SERVICE_CONTAINER}
           modelServicePort: ${MODEL_SERVICE_PORT}
-          customModelName: ${{ steps['fetch-model-from-catalog'].output.entity.metadata.annotations | pick('rhdh.modelcatalog.io/model-name') if parameters.modelServer === 'choose-from-the-catalog' else parameters.modelName }}
+          customModelName: ${{ (steps['fetch-model-server-from-catalog'].output.entity.spec.models.default or steps['fetch-model-server-from-catalog'].output.entity.spec.models.available[0]) if parameters.modelServer === 'choose-from-the-catalog' else parameters.modelName }}
           modelName: ${MODEL_NAME}
           modelSrc: ${MODEL_SRC}
           modelServerName: ${{ parameters.modelServer }}
@@ -655,16 +644,29 @@ spec:
           # for vllm
           vllmSelected: ${{ parameters.modelServer === 'vLLM' }}
           vllmModelServiceContainer: ${VLLM_CONTAINER}
-          modelName: ${{ parameters.modelName if parameters.modelServer === 'Bring you own model server' else (steps['fetch-model-from-catalog'].output.entity.metadata.annotations | pick('rhdh.modelcatalog.io/model-name') if parameters.modelServer === 'choose-from-the-catalog' else '${LLM_MODEL_NAME}') }}
+          modelName: ${{ parameters.modelName if parameters.modelServer === 'Bring you own model server' else ((steps['fetch-model-server-from-catalog'].output.entity.spec.models.default or steps['fetch-model-server-from-catalog'].output.entity.spec.models.available[0]) if parameters.modelServer === 'choose-from-the-catalog' else '${LLM_MODEL_NAME}') }}
           modelSrc: ${MODEL_SRC}
           maxModelLength: ${LLM_MAX_MODEL_LEN}
           # SED_LLM_SERVER_END
           existingModelServer: ${{ true if parameters.modelServer === 'Bring you own model server' else (true if parameters.modelServer === 'choose-from-the-catalog' else false) }}
           # SED_EXISTING_START
-          modelEndpoint: ${{ (steps['fetch-model-server-from-catalog'].output.entity.metadata.annotations | pick('rhdh.modelcatalog.io/internal-service-url')) if parameters.modelServer === 'choose-from-the-catalog' else parameters.modelEndpoint }}
+          modelEndpoint: ${{ steps['fetch-model-server-from-catalog'].output.entity.spec.serverUrl if parameters.modelServer === 'choose-from-the-catalog' else parameters.modelEndpoint }}
           modelEndpointSecretName: ${{ parameters.modelEndpointSecretName }}
           modelEndpointSecretKey: ${{ parameters.modelEndpointSecretKey }}
           includeModelEndpointSecret: ${{ parameters.includeModelEndpointSecret }}
+          # SED_EXISTING_END
+          # SED_EXISTING_START
+          # SED_EXISTING_FROM_CATALOG_START
+          # SED_LLM_SERVER_START
+          modelCatalogEntityRef: ${{ parameters.catalogModel if parameters.modelServer === 'choose-from-the-catalog' else '' }}
+          # SED_LLM_SERVER_END
+          # SED_ASR_MODEL_SERVER_START
+          modelCatalogEntityRef: ${{ parameters.catalogModelServer if parameters.modelServer === 'choose-from-the-catalog' else '' }}
+          # SED_ASR_MODEL_SERVER_END
+          # SED_DETR_MODEL_SERVER_START
+          modelCatalogEntityRef: ${{ parameters.catalogModelServer if parameters.modelServer === 'choose-from-the-catalog' else '' }}
+          # SED_DETR_MODEL_SERVER_END
+          # SED_EXISTING_FROM_CATALOG_END
           # SED_EXISTING_END
           # SED_APP_SUPPORT_START
           # for RHOAI
