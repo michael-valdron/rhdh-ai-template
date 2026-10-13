@@ -11,10 +11,10 @@ By choosing this template you can deploy a Chatbot application that is supported
 
 - Llamacpp_python
   - A simple Python binding of the Llamacpp LLM inference server.
-  - Serves the [ibm-granite/granite-3.1-8b-instruct](https://huggingface.co/ibm-granite/granite-3.1-8b-instruct) model.
+  - Serves the [ibm-granite/granite-3.3-8b-instruct](https://huggingface.co/ibm-granite/granite-3.3-8b-instruct) model.
 - vLLM
   - A high throughput, memory efficient inference and serving engine with GPU support for LLMs.
-  - Serves the [ibm-granite/granite-3.1-8b-instruct](https://huggingface.co/ibm-granite/granite-3.1-8b-instruct) model.
+  - Serves the [ibm-granite/granite-3.3-8b-instruct](https://huggingface.co/ibm-granite/granite-3.3-8b-instruct) model.
 - Bring-Your-Own
   - You can supply your own model server and model.
   - You must ensure that you provide a model that supports Text Generation tasks.

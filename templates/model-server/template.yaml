@@ -4,7 +4,7 @@ kind: Template
 metadata:
   name: model-server
   title: Model Server, No Application
-  description: Deploy a granite-3.1 8b model with a vLLM server. While no application is configured, this model server can be utilized in other Software Templates, like a Chatbot Application for instance.
+  description: Deploy a granite-3.3 8b model with a vLLM server. While no application is configured, this model server can be utilized in other Software Templates, like a Chatbot Application for instance.
   tags: ["ai", "vllm", "modelserver"]
   annotations:
     backstage.io/techdocs-ref: dir:.
@@ -109,11 +109,11 @@ spec:
                   description: A high throughput, memory efficient inference and serving engine with GPU support for LLMs in OpenShift. If you choose vLLM, ensure that your cluster has Nvidia GPU supported (with compute capability 7.0 or higher). Also, it should have enough CPU & memory resources for the model you would like to work with. | [Learn more](https://github.com/redhat-developer/rhdh-ai-developer-images/tree/main/model-servers/vllm/0.11.0)
                 modelNameDeployed:
                   title: Model Name
-                  description: Text Generation | Apache-2.0 | [Learn more](https://huggingface.co/ibm-granite/granite-3.1-8b-instruct)
-                  default: ibm-granite/granite-3.1-8b-instruct
+                  description: Text Generation | Apache-2.0 | [Learn more](https://huggingface.co/ibm-granite/granite-3.3-8b-instruct)
+                  default: ibm-granite/granite-3.3-8b-instruct
                   type: string
                   enum:
-                    - ibm-granite/granite-3.1-8b-instruct
+                    - ibm-granite/granite-3.3-8b-instruct
             # SED_LLM_SERVER_END
     - title: Application Repository Information
       required:
@@ -248,7 +248,7 @@ spec:
           # for vllm
           vllmSelected: ${{ parameters.modelServer === 'vLLM' }}
           vllmModelServiceContainer: quay.io/redhat-ai-dev/vllm-openai-ubi9:v0.11.0
-          modelName: ${{ parameters.modelName if parameters.modelServer === 'Bring you own model server' else (steps['fetch-model-from-catalog'].output.entity.metadata.annotations | pick('rhdh.modelcatalog.io/model-name') if parameters.modelServer === 'choose-from-the-catalog' else 'ibm-granite/granite-3.1-8b-instruct') }}
+          modelName: ${{ parameters.modelName if parameters.modelServer === 'Bring you own model server' else ((steps['fetch-model-server-from-catalog'].output.entity.spec.models.default or steps['fetch-model-server-from-catalog'].output.entity.spec.models.available[0]) if parameters.modelServer === 'choose-from-the-catalog' else 'ibm-granite/granite-3.3-8b-instruct') }}
           modelSrc: 
           maxModelLength: 4096
           # SED_LLM_SERVER_END

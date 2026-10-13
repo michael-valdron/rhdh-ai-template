@@ -196,7 +196,7 @@ spec:
                   const: llama.cpp
                 modelServerDescription:
                   type: 'null'
-                  description: A Python binding of LLM inference in C/C++ with minimal setup. | [Learn more](https://github.com/redhat-developer/rhdh-ai-developer-images/tree/main/model-servers/llamacpp_python/0.3.16)
+                  description: A Python binding of LLM inference in C/C++ with minimal setup. | [Learn more](https://github.com/redhat-developer/rhdh-ai-developer-images/tree/main/model-servers/llamacpp_python/0.3.35)
                 modelNameDeployed:
                   title: Model Name
                   description: Text Generation | Apache-2.0 | [Learn more](https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-AWQ)
@@ -360,15 +360,15 @@ spec:
           appContainer: ${{ 'quay.io/redhat-ai-dev/ai-template-bootstrap-app:latest' if parameters.hostType === 'GitHub' else 'quay.io/redhat-ai-dev/codegen:latest' }}
           appPort: 8501
           appRunCommand: "streamlit run codegen-app.py"
-          modelServiceContainer: quay.io/redhat-ai-dev/llamacpp_python:0.3.16
+          modelServiceContainer: quay.io/redhat-ai-dev/llamacpp_python:0.3.35
           modelServicePort: 8001
-          customModelName: ${{ steps['fetch-model-from-catalog'].output.entity.metadata.annotations | pick('rhdh.modelcatalog.io/model-name') if parameters.modelServer === 'choose-from-the-catalog' else parameters.modelName }}
+          customModelName: ${{ (steps['fetch-model-server-from-catalog'].output.entity.spec.models.default or steps['fetch-model-server-from-catalog'].output.entity.spec.models.available[0]) if parameters.modelServer === 'choose-from-the-catalog' else parameters.modelName }}
           modelName: TheBloke/Mistral-7B-Instruct-v0.2-AWQ
           modelSrc: https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-AWQ
           modelServerName: ${{ parameters.modelServer }}
           customModelAndModelServerSelected: ${{ true if parameters.modelServer === 'Bring you own model server' else (true if parameters.modelServer === 'choose-from-the-catalog' else false) }}
           modelServiceSrcVLLM: https://github.com/redhat-developer/rhdh-ai-developer-images/tree/main/model-servers/vllm/0.11.0
-          modelServiceSrcOther: https://github.com/redhat-developer/rhdh-ai-developer-images/tree/main/model-servers/llamacpp_python/0.3.16
+          modelServiceSrcOther: https://github.com/redhat-developer/rhdh-ai-developer-images/tree/main/model-servers/llamacpp_python/0.3.35
     # Renders all the template variables into the files and directory names and content, and places the result in the workspace.
     - id: fetch-skeleton
       name: Fetch Skeleton
@@ -458,22 +458,24 @@ spec:
           modelPath: "/model/model.file"
           appContainer: ${{ 'quay.io/redhat-ai-dev/ai-template-bootstrap-app:latest' if parameters.hostType === 'GitHub' else 'quay.io/redhat-ai-dev/codegen:latest' }}
           appPort: 8501
-          modelServiceContainer: quay.io/redhat-ai-dev/llamacpp_python:0.3.16
+          modelServiceContainer: quay.io/redhat-ai-dev/llamacpp_python:0.3.35
           modelServicePort: 8001
           # SED_LLM_SERVER_START
           # for vllm
           vllmSelected: ${{ parameters.modelServer === 'vLLM' }}
           vllmModelServiceContainer: quay.io/redhat-ai-dev/vllm-openai-ubi9:v0.11.0
-          modelName: ${{ parameters.modelName if parameters.modelServer === 'Bring you own model server' else (steps['fetch-model-from-catalog'].output.entity.metadata.annotations | pick('rhdh.modelcatalog.io/model-name') if parameters.modelServer === 'choose-from-the-catalog' else 'TheBloke/Mistral-7B-Instruct-v0.2-AWQ') }}
+          modelName: ${{ parameters.modelName if parameters.modelServer === 'Bring you own model server' else ((steps['fetch-model-server-from-catalog'].output.entity.spec.models.default or steps['fetch-model-server-from-catalog'].output.entity.spec.models.available[0]) if parameters.modelServer === 'choose-from-the-catalog' else 'TheBloke/Mistral-7B-Instruct-v0.2-AWQ') }}
           modelSrc: https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.2-AWQ
           maxModelLength: 4096
           # SED_LLM_SERVER_END
           existingModelServer: ${{ true if parameters.modelServer === 'Bring you own model server' else (true if parameters.modelServer === 'choose-from-the-catalog' else false) }}
           # SED_EXISTING_START
-          modelEndpoint: ${{ (steps['fetch-model-server-from-catalog'].output.entity.metadata.annotations | pick('rhdh.modelcatalog.io/internal-service-url')) if parameters.modelServer === 'choose-from-the-catalog' else parameters.modelEndpoint }}
+          modelEndpoint: ${{ steps['fetch-model-server-from-catalog'].output.entity.spec.serverUrl if parameters.modelServer === 'choose-from-the-catalog' else parameters.modelEndpoint }}
           modelEndpointSecretName: ${{ parameters.modelEndpointSecretName }}
           modelEndpointSecretKey: ${{ parameters.modelEndpointSecretKey }}
           includeModelEndpointSecret: ${{ parameters.includeModelEndpointSecret }}
+          # SED_EXISTING_END
+          # SED_EXISTING_START
           # SED_EXISTING_END
           # SED_APP_SUPPORT_START
           # for RHOAI
@@ -484,7 +486,7 @@ spec:
           supportApp: true
           modelServerName: ${{ parameters.modelServer }}
           modelServiceSrcVLLM: https://github.com/redhat-developer/rhdh-ai-developer-images/tree/main/model-servers/vllm/0.11.0
-          modelServiceSrcOther: https://github.com/redhat-developer/rhdh-ai-developer-images/tree/main/model-servers/llamacpp_python/0.3.16
+          modelServiceSrcOther: https://github.com/redhat-developer/rhdh-ai-developer-images/tree/main/model-servers/llamacpp_python/0.3.35
           imageRegistry: ${{ parameters.imageRegistry }}
           imageOrg: ${{ parameters.imageOrg }}
           imageName: ${{ parameters.imageName }}

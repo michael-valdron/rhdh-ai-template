@@ -11,10 +11,10 @@ export APP_RUN_COMMAND="streamlit run codegen-app.py"
 # https://github.com/redhat-developer/rhdh-ai-developer-images/tree/main/models/mistral-7b-instruct-v0.2
 export INIT_CONTAINER="quay.io/redhat-ai-dev/mistral-7b-instruct-v0.2:latest"
 
-# https://github.com/redhat-developer/rhdh-ai-developer-images/tree/main/model-servers/llamacpp_python/0.3.16
-export MODEL_SERVICE_CONTAINER="quay.io/redhat-ai-dev/llamacpp_python:0.3.16"
+# https://github.com/redhat-developer/rhdh-ai-developer-images/tree/main/model-servers/llamacpp_python/0.3.35
+export MODEL_SERVICE_CONTAINER="quay.io/redhat-ai-dev/llamacpp_python:0.3.35"
 export MODEL_SERVICE_DESC="A Python binding of LLM inference in C/C++ with minimal setup"
-export MODEL_SERVICE_SRC="https://github.com/redhat-developer/rhdh-ai-developer-images/tree/main/model-servers/llamacpp_python/0.3.16"
+export MODEL_SERVICE_SRC="https://github.com/redhat-developer/rhdh-ai-developer-images/tree/main/model-servers/llamacpp_python/0.3.35"
 
 # https://github.com/redhat-developer/rhdh-ai-developer-images/tree/main/model-servers/vllm/0.11.0
 export VLLM_CONTAINER="quay.io/redhat-ai-dev/vllm-openai-ubi9:v0.11.0"

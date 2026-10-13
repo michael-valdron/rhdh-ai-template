@@ -18,7 +18,12 @@ spec:
   type: gitops
   owner: ${{ values.owner }} 
   lifecycle: experimental
-  {%- if values.supportApp %}
+  {%- if values.supportApp or values.modelCatalogEntityRef %}
   dependsOn:
+    {%- if values.supportApp %}
     - component:${{ values.name }}
-  {%- endif %}  
+    {%- endif %}
+    {%- if values.modelCatalogEntityRef %}
+    - ${{ values.modelCatalogEntityRef }}
+    {%- endif %}
+  {%- endif %}
