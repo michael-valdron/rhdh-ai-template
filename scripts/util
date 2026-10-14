@@ -14,7 +14,12 @@ function apply-configurations() {
     mkdir -p $DEST/docs && cp -r $SKELETON_DIR/template-card-techdocs/$TEMPLATE_TECHDOC_TYPE/docs/common/* $DEST/docs/
     cp -r $SKELETON_DIR/template-card-techdocs/$TEMPLATE_TECHDOC_TYPE/mkdocs.yml $DEST/mkdocs.yml
 
-    cp $SKELETON_DIR/template.yaml $DEST/template.yaml
+    # Preserve templates with a dedicated parameter and deployment flow.
+    local template_source="$SKELETON_DIR/template-overrides/$SAMPLENAME.yaml"
+    if [ ! -f "$template_source" ]; then
+        template_source="$SKELETON_DIR/template.yaml"
+    fi
+    cp "$template_source" "$DEST/template.yaml"
 
     # get default env variables
     source $SCRIPTDIR/envs/base
@@ -38,6 +43,11 @@ function apply-configurations() {
     sed -i "s!sed.edit.TEMPLATE_SOURCE_URL!$TEMPLATE_SOURCE_URL!g" $DEST/docs/index.md
     sed -i "s!sed.edit.LLM_MODEL_NAME!$LLM_MODEL_NAME!g" $DEST/docs/index.md
     sed -i "s!sed.edit.LLM_MODEL_SRC!$LLM_MODEL_SRC!g" $DEST/docs/index.md
+
+    # Dedicated overrides are complete scaffolder definitions.
+    if [ -f "$SKELETON_DIR/template-overrides/$SAMPLENAME.yaml" ]; then
+        return
+    fi
 
     if [ $SUPPORT_APP == false ]; then
         sed -i '/# SED_APP_SUPPORT_START/,/# SED_APP_SUPPORT_END/d' $DEST/template.yaml

@@ -314,7 +314,7 @@ spec:
           modelServicePort: 8001
           # for vllm
           vllmSelected: ${{ parameters.modelServer === 'vLLM' }}
-          vllmModelServiceContainer: 
+          vllmModelServiceContainer: quay.io/rh-aiservices-bu/vllm-openai-ubi9:0.4.2
           vllmModelName: 
           maxModelLength: 
           modelServerName: ${{ parameters.modelServer }}

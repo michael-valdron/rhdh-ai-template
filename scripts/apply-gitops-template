@@ -1,0 +1,19 @@
+#!/bin/bash
+
+SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )" 
+ROOTDIR=$(realpath "$SCRIPTDIR/..")
+APP_DIR="$ROOTDIR/apps/ai"
+
+source "$ROOTDIR/properties"
+
+mkdir -p "$APP_DIR"
+
+DEST="$ROOTDIR/skeleton/gitops-template"
+rm -rf "$DEST/components"
+rm -rf "$DEST/app-of-apps"
+rm -rf "$DEST/application.yaml"
+mkdir -p "$DEST/components"
+mkdir -p "$DEST/app-of-apps"
+cp -r "$APP_DIR/templates/app-of-apps" "$DEST/"
+cp -r "$APP_DIR/templates/http" "$DEST/components/http"     # only support http now
+cp -r "$APP_DIR/templates/application.yaml" "$DEST/"

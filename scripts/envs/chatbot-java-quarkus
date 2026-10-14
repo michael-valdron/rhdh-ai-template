@@ -9,7 +9,7 @@ export APP_TAGS='["ai", "llamacpp", "quarkus"]'
 export APP_RUN_COMMAND="java -jar target/quarkus-app/quarkus-run.jar"
 export APP_PORT=8080
 
-# https://github.com/redhat-ai-dev/developer-images/tree/main/model/granite-7b-lab
+# https://github.com/redhat-developer/rhdh-ai-developer-images/tree/main/model/granite-7b-lab
 export INIT_CONTAINER="quay.io/redhat-ai-dev/granite-7b-lab:latest"
 
 # https://github.com/containers/ai-lab-recipes/tree/main/model_servers/llamacpp_python
@@ -35,4 +35,4 @@ export SUPPORT_LLM=true
 # for gitlab case, since gitlab does not have pipeline webhook pre-set to trigger the initial build
 export APP_INTERFACE_CONTAINER="quay.io/redhat-ai-dev/chatbot:latest"
 
-export TEMPLATE_SOURCE_URL="https://github.com/maysunfaisal/ai-lab-samples/tree/quarkus-1/chatbot-java-quarkus"
+export TEMPLATE_SOURCE_URL="https://github.com/redhat-developer/rhdh-ai-template/tree/experimental/samples/chatbot-java-quarkus"

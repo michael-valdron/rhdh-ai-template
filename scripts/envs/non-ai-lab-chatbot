@@ -12,4 +12,4 @@ export APP_PORT=8501
 export MODEL_SERVICE_CONTAINER="quay.io/ai-lab/llamacpp_python:latest"
 export MODEL_SERVICE_PORT=8001
 export APP_RUN_COMMAND="streamlit run src/sample-app.py"
-export TEMPLATE_SOURCE_URL="https://github.com/redhat-ai-dev/ai-lab-samples/tree/experiment/non-ai-lab-chatbot"
+export TEMPLATE_SOURCE_URL="https://github.com/redhat-developer/rhdh-ai-template/tree/experimental/samples/non-ai-lab-chatbot"

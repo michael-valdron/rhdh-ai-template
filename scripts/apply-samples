@@ -1,0 +1,23 @@
+#!/bin/bash
+
+SCRIPTDIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")" 
+ROOT_DIR="$(realpath "$SCRIPTDIR/..")"
+TEMPLATE_DIR="$ROOT_DIR/templates"
+TEMPLATE_TECHDOC_TYPE=app
+SAMPLES_DIR="$ROOT_DIR/samples"
+
+mkdir -p "$SAMPLES_DIR"
+
+for f in "$SAMPLES_DIR"/*; do
+    if [ -d "$f" ]; then
+        # $f is a directory
+        SAMPLENAME=$(basename $f)
+        DEST="$TEMPLATE_DIR/$SAMPLENAME"
+        rm -rf $DEST
+        mkdir -p $DEST
+        cp -r "$SAMPLES_DIR/$SAMPLENAME" "$DEST/content"
+
+        source "$SCRIPTDIR/util"
+        apply-configurations "$DEST" "$SAMPLENAME" "$TEMPLATE_TECHDOC_TYPE"
+    fi
+done
