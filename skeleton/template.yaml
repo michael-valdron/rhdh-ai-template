@@ -68,8 +68,7 @@ spec:
                     - llama.cpp
                     - vLLM
                   default: llama.cpp
-                  ui:help: If you choose vLLM, ensure your cluster has Nvidia GPU supported, and
-                    has enough CPU and memory resources
+                  ui:help: If you choose vLLM, ensure your cluster has Nvidia GPU supported, and has enough CPU and memory resources
               required:
                 - namespace
                 - modelServerOpenshift
@@ -118,7 +117,7 @@ spec:
                 - githubServer
               properties:
                 hostType:
-                    const: GitHub
+                  const: GitHub
                 githubServer:
                   title: Repository Server
                   type: string
@@ -128,7 +127,7 @@ spec:
                 - gitlabServer
               properties:
                 hostType:
-                    const: GitLab
+                  const: GitLab
                 gitlabServer:
                   title: Repository Server
                   type: string
@@ -166,7 +165,7 @@ spec:
       action: fetch:template
       input:
         url: ./content
-        targetPath: source   
+        targetPath: source
     - id: fetch-skeleton-docs
       name: Fetch Skeleton Techdocs
       action: fetch:template
@@ -190,7 +189,7 @@ spec:
           modelServerName: ${{ parameters.modelServer }}
           customModelAndModelServerSelected: ${{ true if parameters.modelServer === 'Existing model server' else false }}
           modelServiceSrcVLLM: ${MODEL_SERVICE_SRC_VLLM}
-          modelServiceSrcOther: ${MODEL_SERVICE_SRC_OTHER}     
+          modelServiceSrcOther: ${MODEL_SERVICE_SRC_OTHER}
     # Renders all the template variables into the files and directory names and content, and places the result in the workspace.
     - id: fetch-skeleton
       name: Fetch Skeleton
@@ -202,13 +201,13 @@ spec:
         values:
           name: ${{ parameters.name }}
           namespace: ${{ parameters.namespace }}
-          description: sed.edit.CATALOG_DESCRIPTION 
+          description: sed.edit.CATALOG_DESCRIPTION
           dockerfile: sed.edit.DOCKERFILE
           buildContext: sed.edit.BUILDCONTEXT
           gitopsSecretName: ${{ 'gitops-auth-secret' if parameters.hostType === 'GitHub' else 'gitlab-auth-secret' }}
           image: '${{ parameters.imageRegistry }}/${{ parameters.imageOrg }}/${{ parameters.imageName }}'
           tags: 'sed.edit.APPTAGS'
-          owner: ${{ parameters.owner }} 
+          owner: ${{ parameters.owner }}
           repoSlug: '${{ parameters.imageOrg }}/${{ parameters.imageName }}'
           defaultBranch: ${{ parameters.branch }}
     - id: fetch-skeleton-local
@@ -251,7 +250,7 @@ spec:
       if: ${{ parameters.hostType === 'GitHub' }}
       input:
         sourcePath: source
-        allowedHosts: [ '${{ parameters.githubServer}}' ]
+        allowedHosts: ['${{ parameters.githubServer}}']
         description: This is ${{ parameters.name }}
         repoUrl: ${{ parameters.githubServer }}?owner=${{ parameters.repoOwner }}&repo=${{ parameters.repoName }}
         defaultBranch: ${{ parameters.branch }}
@@ -268,7 +267,7 @@ spec:
       if: ${{ parameters.hostType === 'GitLab' }}
       input:
         sourcePath: source
-        allowedHosts: [ '${{ parameters.gitlabServer }}' ]
+        allowedHosts: ['${{ parameters.gitlabServer }}']
         description: This is ${{ parameters.name }}
         repoUrl: ${{ parameters.gitlabServer }}?owner=${{ parameters.repoOwner }}&repo=${{ parameters.repoName }}
         defaultBranch: ${{ parameters.branch }}
@@ -293,7 +292,7 @@ spec:
           repoURL: https://${{ parameters.githubServer if parameters.hostType === 'GitHub' else parameters.gitlabServer }}/${{ parameters.repoOwner }}/${{ parameters.repoName }}-gitops
           srcRepoURL: https://${{ parameters.githubServer if parameters.hostType === 'GitHub' else parameters.gitlabServer }}/${{ parameters.repoOwner }}/${{ parameters.repoName }}
           argoComponentOverlays: './components/${{ parameters.name }}/overlays'
-          owner: ${{ parameters.owner }} 
+          owner: ${{ parameters.owner }}
           image: quay.io/redhat-appstudio/dance-bootstrap-app:latest # bootstrap app image as placeholder
           # actual src image, should be used by tekton PR pipeline to update the image in gitops repo
           srcImage: '${{ parameters.imageRegistry }}/${{ parameters.imageOrg }}/${{ parameters.imageName }}'
@@ -340,7 +339,7 @@ spec:
         sourcePath: gitops
         allowedHosts: ['${{ parameters.githubServer }}']
         description: This is GitOps repository for ${{ parameters.name }}
-        repoUrl:  ${{ parameters.githubServer }}?owner=${{ parameters.repoOwner }}&repo=${{ parameters.repoName }}-gitops
+        repoUrl: ${{ parameters.githubServer }}?owner=${{ parameters.repoOwner }}&repo=${{ parameters.repoName }}-gitops
         defaultBranch: "main"
         protectDefaultBranch: false
         repoVisibility: "public"
@@ -353,7 +352,7 @@ spec:
         sourcePath: gitops
         allowedHosts: ['${{ parameters.gitlabServer }}']
         description: This is GitOps repository for ${{ parameters.name }}
-        repoUrl:  ${{ parameters.gitlabServer }}?owner=${{ parameters.repoOwner }}&repo=${{ parameters.repoName }}-gitops
+        repoUrl: ${{ parameters.gitlabServer }}?owner=${{ parameters.repoOwner }}&repo=${{ parameters.repoName }}-gitops
         defaultBranch: "main"
         protectDefaultBranch: false
         repoVisibility: "public"
@@ -409,11 +408,7 @@ spec:
         repoUrl: ${{ parameters.githubServer }}?owner=${{ parameters.repoOwner }}&repo=${{ parameters.repoName }}
         branchOrTagName: ${{ parameters.branch }}
         workflowId: automerge.yml
-        workflowInputs: {
-          pr_url: "${{ steps['trigger-build-pr'].output.remoteUrl }}"
-        }
-
-
+        workflowInputs: {pr_url: "${{ steps['trigger-build-pr'].output.remoteUrl }}"}
   # Outputs are displayed to the user after a successful execution of the template.
   output:
     links:
